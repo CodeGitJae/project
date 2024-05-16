@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h4>질문 목록</h4>
+{% if question_list %}
+<div class="container">
+    <table class="table my-3">
+        <thead>
+          <tr>
+            <th scope="col">번호</th>
+            <th scope="col">제목</th>
+            <th scope="col">작성자</th>   <!-- 작성자 추가-->
+            <th scope="col">작성일</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for question in question_list %}
+          <tr>
+            <td>{{(question_list.page -1)*question_list.per_page + loop.index}}</td>
+            <td><a href="{{url_for('question.detail', question_id=question.id)}}">
+              {{question.subject}}
+              {% if question.answer_set|length > 0 %}
+              <span style="color:red;"> [{{question.answer_set|length}}]</span>
+              {% endif %}
+                </a>
+            </td>
+            <td>
+              {{question.user.username}}   <!-- 추가-->
+            </td>
+            <td>{{question.create_date | datetime}}</td>
+          </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+
+      <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+          <div></div>
+          {% if question_list.has_prev %}
+          <li class="page-item"><a class="page-link" href="{{url_for('question.index', page=question_list.prev_num)}}">이전</a></li>
+          {% else %}
+          <!-- 이곳을 비워서 버튼을 감추는 역할을 함.  다음페이지 else는 보이지만 안넘어가는기능-->
+          {% endif %}
+
+          {% for page in question_list.iter_pages(left_edge=0, left_current=3, right_current=3, right_edge=0) %}
+            {% if page %}
+              <li class="page-item{% if page == question_list.page %} active{% endif %}">
+                <a class="page-link" href="{{url_for('question.index', page=page)}}">{{page}}</a></li>
+            {% else %}
+              <li class="page-item disabled"><a class="page-link" href="javascript:void(0)">...</a></li>
+            {% endif %}
+          {% endfor %}
+
+          {% if question_list.has_next %}
+          <li class="page-item"><a class="page-link" href="{{url_for('question.index', page=question_list.next_num)}}">다음</a></li>
+          {% else %}
+          <li class="page-item"><a class="page-link" href="javascript:void(0)">다음</a></li>
+          {% endif %}
+        </ul>
+      </nav>
+
+      <a href="{{url_for('question.create')}}">질 문 등 록</a>
+
+</div>   
+{% else %}
+    <p>질문이 없습니다.</p>
+{% endif %}
+
+<select name="test" id="test">
+  <option value="aaa">hello1</option>
+  <option value="bbb">hello2</option>
+  <option value="ccc">hello3</option>
+</select>
+
+{% include "weather_part.html" %}
+
+{% endblock %}
+
+{% block script %}
+<script>
+$(document).ready(function(){
+  getWeather();
+});
+
+
+
+</script>
+
+{% endblock %}

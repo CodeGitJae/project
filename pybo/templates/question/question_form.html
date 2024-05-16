@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container my-3">
+<h4>질문 {{'수정' if g.is_update else '등록'}} 화면</h4> <!-- 수정 화면으로 가는 조건 식-->
+<form method="post" class="my-4" enctype="multipart/form-data">
+    {{form.csrf_token}}
+
+    {% include "form_errors.html" %}
+    
+    <input type="hidden" name="user_id" value="{{g.user.id}}">   <!-- 추가 -->
+
+    
+    <div class="mb-3">
+        <label for="subject" class="form-label">제목</label>
+        <input class="form-control" id="subject" name="subject" value="{{form.subject.data or ''}}">
+    </div>
+    <div class="mb-3">
+        <label for="content" class="form-label">내용</label>
+        <textarea class="form-control" name="content" id="content" rows="10">{{form.content.data or ''}}</textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="file" class="form-label">첨부파일</label>
+        <input type="file" class="form-control" id="file" name="file" value="{{form.file_path.data or ''}}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">등록</button> <!-- 수정 화면으로 가는 조건 식-->
+</form>
+</div>
+{% endblock %}

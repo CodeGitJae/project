@@ -1,0 +1,22 @@
+<!-- 1. templates 폴더에 바로 넣기 다른 폴더들과 형제 관계가 될 수 있도록
+     2.  유효성 검사가 필요한 부분은 include "form_errors.html" 
+        jinja문법을 사용해서 유효성 검사 적용해주기-->
+        
+{% if form.errors %}
+<div class="alert alert-dander" role="alert">
+    {% for field, errors in form.errors.items() %}
+        <p>{{form[field].label}}</p>
+            <ul>
+                {% for error in errors %}
+                    <li>{{error}}</li>
+                {% endfor %}
+            </ul>
+    {% endfor %}
+</div>
+{% endif %}
+
+{% for msg in get_flashed_messages() %}
+<div class="alert alert-danger" role="alert">
+    {{msg}}
+</div>
+{% endfor %}
