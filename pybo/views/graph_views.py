@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 mpl.rc("font", family="Malgun Gothic")
 
 bp = Blueprint("graph", __name__, url_prefix="/graph")
-df = pd.read_csv("pybo\static\others\서울시 코로나19 확진자전수감시 발생동향.csv", encoding="cp949")
+df = pd.read_csv("pybo/static/others/서울시 코로나19 확진자전수감시 발생동향.csv", encoding="cp949")
 df1 = df.copy()
 
 df1["서울시 기준일"]= df1["서울시 기준일"].str.replace(".", "-")
@@ -44,9 +44,9 @@ def worldmap():
 def covid19_analysis():
     global df1, df_2020, df_2021, df_2022, df_2023
 
-    바뀌= pd.pivot_table(data=바뀌, index=["서울시기준바뀌"], values=["서울시 확진자","서울시 퇴원", "서울시 사망"])
+    df01= pd.pivot_table(data=df1, index=["서울시기준연도"], values=["서울시 확진자","서울시 퇴원", "서울시 사망"])
 
-    바뀌.plot(kind="line",y=["서울시 확진자","서울시 퇴원", "서울시 사망"])
+    df01.plot(kind="line",y=["서울시 확진자","서울시 퇴원", "서울시 사망"])
     plt.ylabel("Count")
     plt.title("서울시 2023년 확진, 퇴원, 사망 현황")
     photo1 = "pybo/static/upload/line_plot.png"
@@ -54,7 +54,7 @@ def covid19_analysis():
     line = photo1[11:]
 
     plt.subplot(1, 1, 1)
-    df_year.plot(kind="bar", y=["서울시 퇴원", "서울시 사망"])
+    df01.plot(kind="bar", y=["서울시 퇴원", "서울시 사망"])
     plt.ylabel("Count")
     plt.title("완치자와 사망자 비교표")
     photo2 = "pybo/static/upload/bar_plot.png"
