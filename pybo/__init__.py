@@ -31,7 +31,7 @@ def create_app():
     from . import models
 
     from .views import main_views, test_views, question_views, answer_views
-    from .views import auth_views, weather_views, graph_views, covid19_views
+    from .views import auth_views, weather_views 
     from .filter import datetime_fmt
 
     app.register_blueprint(main_views.bp)
@@ -40,8 +40,7 @@ def create_app():
     app.register_blueprint(answer_views.bp)
     app.register_blueprint(auth_views.bp)
     app.register_blueprint(weather_views.bp)
-    app.register_blueprint(graph_views.bp)
-    app.register_blueprint(covid19_views.bp)
+
     app.jinja_env.filters['datetime'] = datetime_fmt
     
 
