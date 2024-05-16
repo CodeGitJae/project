@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+    <div>
+        <h4 class="d-flex justify-content-center" style="color:blue;">코로나 확진, 완치, 사망 그래프[연 단위: 20년 ~ 23년]</h4>
+        <img src="{{url_for('static', filename=line_plot)}}" class="img-thumbnail" alt="첨부된 이미지">
+    </div>
+    <div >
+        <h4 class="d-flex justify-content-center" style="color:blue;">코로나 완치자, 사망자 수 비교표 [연 단위: 20년 ~ 23년]</h4>
+        <img src="{{url_for('static', filename=bar_plot)}}" class="img-thumbnail" alt="첨부된 이미지">
+    </div>
+
+    <div>
+        <h4 class="d-flex justify-content-center" style="color:blue;">서울시 월 단위 확진, 퇴원, 사망 현황 [월 단위: 2020년]</h4>
+        <img src="{{url_for('static', filename=line_plot20)}}" class="img-thumbnail" alt="첨부된 이미지">
+    </div>
+    <div >
+        <h4 class="d-flex justify-content-center" style="color:blue;">사망자 집계표 [월 단위: 2020년]</h4>
+        <img src="{{url_for('static', filename=bar_plot20)}}" class="img-thumbnail" alt="첨부된 이미지">
+    </div>
+
+    <div>
+        <h4 class="d-flex justify-content-center" style="color:blue;">서울시 월 단위 확진, 퇴원, 사망 현황 [월 단위: 2021년]</h4>
+        <img src="{{url_for('static', filename=line_plot21)}}" class="img-thumbnail" alt="첨부된 이미지">
+    </div>
+    <div >
+        <h4 class="d-flex justify-content-center" style="color:blue;">사망자 집계표 [월 단위: 2021년]</h4>
+        <img src="{{url_for('static', filename=bar_plot21)}}" class="img-thumbnail" alt="첨부된 이미지">
+    </div>
+
+
+    <div>
+        <h4 class="d-flex justify-content-center" style="color:blue;">서울시 월 단위 확진, 퇴원, 사망 현황 [월 단위: 2022년]</h4>
+        <img src="{{url_for('static', filename=line_plot22)}}" class="img-thumbnail" alt="첨부된 이미지">
+    </div>
+    <div >
+        <h4 class="d-flex justify-content-center" style="color:blue;">완치자와 사망자 비교표 [월 단위: 2022년]</h4>
+        <img src="{{url_for('static', filename=bar_plot22)}}" class="img-thumbnail" alt="첨부된 이미지">
+    </div>
+    <div >
+        <h4 class="d-flex justify-content-center" style="color:blue;">사망자 집계표 [월 단위: 2022년]</h4>
+        <img src="{{url_for('static', filename=bar_plot222)}}" class="img-thumbnail" alt="첨부된 이미지">
+    </div>
+
+    <div>
+        <h4 class="d-flex justify-content-center" style="color:blue;">서울시 월 단위 확진, 퇴원, 사망 현황 [월 단위: 2023년]</h4>
+        <img src="{{url_for('static', filename=line_plot23)}}" class="img-thumbnail" alt="첨부된 이미지">
+    </div>
+    <div >
+        <h4 class="d-flex justify-content-center" style="color:blue;">완치자와 사망자 비교표 [월 단위: 2023년]</h4>
+        <img src="{{url_for('static', filename=bar_plot23)}}" class="img-thumbnail" alt="첨부된 이미지">
+    </div>
+    <div >
+        <h4 class="d-flex justify-content-center" style="color:blue;">완치자 집계표 [월 단위: 2023년]</h4>
+        <img src="{{url_for('static', filename=bar_plot233)}}" class="img-thumbnail" alt="첨부된 이미지">
+    </div>
+</div>
+
+{% endblock%}

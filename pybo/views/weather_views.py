@@ -5,7 +5,7 @@ import json
 import math
 
 bp = Blueprint("weather", __name__, url_prefix="/weather")
-df = pd.read_excel("pybo\static\others\기상청_격자_위경도.xlsx")
+df = pd.read_excel("pybo/static/others/기상청_격자_위경도.xlsx")
 df1 = df.copy()
 
 df2 = df1.drop(df1.columns[7:-3], axis="columns")
