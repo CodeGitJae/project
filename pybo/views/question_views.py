@@ -118,6 +118,7 @@ def create():
 def detail(question_id):
     form = AnswerForm()
     question = Question.query.get(question_id)
+    question.content = question.content.replace("\n", "<br>")
     return render_template("question/question_detail.html", question=question, form=form)
 
 @bp.route("/list")

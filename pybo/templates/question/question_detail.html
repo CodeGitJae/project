@@ -1,4 +1,4 @@
-{% extends 'base.html '%}
+{% extends 'base.html' %}
 
 {% block content %}
 
@@ -15,7 +15,7 @@
             <img width="30%" height="30%" src="{{question.file_path}}" alt="첨부된 파일">
           </div>
 
-          <p class="card-text">{{question.content}}</p>
+          <p class="card-text">{{question.content |safe }}</p>
           <div class="d-flex justify-content-end">
             {{question.user.username}} | {{question.create_date | datetime}} <!-- 추가-->
           </div>
