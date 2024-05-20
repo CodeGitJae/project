@@ -15,7 +15,7 @@ dictConfig(
         "version": 1,
         "formatters": {
             "default": {
-                "fotmat" : "[%(asctime)s] %(levelname)s in %(module)s: %(message)s",
+                "format" : "[%(asctime)s] %(levelname)s in %(module)s: %(message)s",
             }
         },
         "handlers": {
