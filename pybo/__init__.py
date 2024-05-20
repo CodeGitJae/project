@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 from flask_migrate import Migrate
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import MetaData               # 추가
@@ -15,6 +15,9 @@ naming_convention = {                           # 추가
 # db = SQLAlchemy()
 db = SQLAlchemy(metadata=MetaData(naming_convention=naming_convention))   # 추가
 migrate = Migrate()
+
+def page_not_found(e):
+    return render_template("404.html"), 404
 
 def create_app():
     app = Flask(__name__)
@@ -43,6 +46,7 @@ def create_app():
     app.register_blueprint(covid19_views.bp)
     app.jinja_env.filters['datetime'] = datetime_fmt
     
+    app.register_error_handler(404, page_not_found)
 
     return app
 
